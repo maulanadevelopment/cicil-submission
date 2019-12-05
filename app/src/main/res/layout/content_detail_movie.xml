@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="model"
+            type="com.maulana.cicilsubmission.model.MovieDetailModel" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        tools:showIn="@layout/activity_detail_movie"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/detail_movie_container_data_global"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent">
+
+                    <TextView
+                        android:id="@+id/detail_movie_title"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp"
+                        android:text="@{model.title}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintLeft_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Maulana" />
+
+                    <TextView
+                        android:text="@{model.genre}"
+                        android:id="@+id/detail_movie_genre"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/detail_movie_title"
+                        tools:text="Action Movie" />
+
+                    <TextView
+                        android:text="@{model.runtime}"
+                        android:id="@+id/detail_movie_runtime"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        app:layout_constraintLeft_toRightOf="@id/detail_movie_genre"
+                        app:layout_constraintTop_toBottomOf="@id/detail_movie_title"
+                        tools:text="5H 45M" />
+
+                    <TextView
+                        android:text="@{model.year}"
+                        android:id="@+id/detail_movie_year"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/detail_movie_genre"
+                        tools:text="2029" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:background="@color/colorWhite"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_movie_container_data_global">
+
+                <TextView
+                    android:id="@+id/detail_movie_plot"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@{model.plot}"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:maxLines="8"
+                    tools:text="Nama sya Maula yusuf sula" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
+
