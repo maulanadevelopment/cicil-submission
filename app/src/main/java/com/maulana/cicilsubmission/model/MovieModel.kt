@@ -16,7 +16,7 @@ data class MovieModel (
     var poster: String
 ): Serializable
 
-open class ResponseMovieModel(
+class ResponseMovieModel(
     @SerializedName("Search")
     var search: List<MovieModel>
 ): Serializable

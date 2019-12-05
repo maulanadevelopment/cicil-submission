@@ -38,11 +38,11 @@ open class MainActivityViewModel : ViewModel() {
     fun getData(query: HashMap<String, String>) {
         page = 1
         title = query["s"].toString()
-//        _showProgress.postValue(true)
+        _showProgress.postValue(true)
         val apiService = RetrofitClient.getClient().create(RetrofitInterface::class.java)
         query["apikey"] = BuildConfig.API_KEY
         query["page"] = page.toString()
-//        viewModelScope.launch {
+        viewModelScope.launch {
             apiService.getListMovie(query).enqueue(object : Callback<ResponseMovieModel> {
                 override fun onFailure(call: Call<ResponseMovieModel>, t: Throwable) {
                     _showProgress.postValue(false)
@@ -53,7 +53,7 @@ open class MainActivityViewModel : ViewModel() {
                     call: Call<ResponseMovieModel>,
                     response: Response<ResponseMovieModel>
                 ) {
-//                    _showProgress.postValue(false)
+                    _showProgress.postValue(false)
                     if (response.isSuccessful) {
                         try{
                             _showRv.postValue(true)
@@ -68,7 +68,7 @@ open class MainActivityViewModel : ViewModel() {
 
                         }catch (e: Exception) {
                             _showRv.postValue(false)
-//                            _errorMessage.postValue("Film Tidak Ada")
+                            _errorMessage.postValue("Film Tidak Ada")
                         }
                     } else {
                         val error = response.errorBody()
@@ -76,7 +76,7 @@ open class MainActivityViewModel : ViewModel() {
                     }
                 }
             })
-//        }
+        }
     }
 
     fun loadMoreData() {
